@@ -1,0 +1,25 @@
+minikube delete
+
+CURD kubectl get, delete : nodes, deployments, services, pods, replicaset
+
+minikube start -p ${NAME} --vm-driver=docker
+
+kubectl create deployment ${DEPLOYMENT_NAME} --image=${IMAGE}
+
+kubectl apply -f express.yaml -n test
+
+kubectl describe services express-serv -n test
+
+kubectl delete -f express.yaml
+
+minikube service express-serv --url
+
+minikube tunnel => mapping external ip
+
+minikube service --url express-serv
+
+minikube addons enable ingress
+
+sửa file host: sudo nano /etc/hosts. Thêm IP address và hostname. Xem IP address trong get ingress
+
+kubectl create configmap ${configname} --from-env-file=${envfile}

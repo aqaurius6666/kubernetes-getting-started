@@ -1,0 +1,7 @@
+version: "3.3"
+services:
+    express-app:
+        image: aqaurius6666/test1:latest
+        ports:
+            - 8000:8000
+        command: ['npm', 'start']
