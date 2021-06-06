@@ -23,3 +23,13 @@ minikube addons enable ingress
 sửa file host: sudo nano /etc/hosts. Thêm IP address và hostname. Xem IP address trong get ingress
 
 kubectl create configmap ${configname} --from-env-file=${envfile}
+
+
+CrashLoopBackOf: app crash by an error and always restart, ... and fail => loop of error then crash
+sts : statefulset
+
+
+config mongo:
+rs.initiate();
+var cfg = rs.conf();
+cfg.members[0].host = "mongo-0.mongo:27017"

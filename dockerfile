@@ -6,7 +6,5 @@ COPY package.json .
 
 RUN npm install
 
-CMD [ "/bin/sh", "-c", "env" ]
-
 COPY . .
 

@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: express-depl
+  labels:
+    app: express-depl
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: express-depl
+  template:
+    metadata:
+      labels:
+        app: express-depl
+    spec:
+      containers:
+      - name: express-server
+
+        image: aqaurius6666/public-test:v21
+        
+        ports:
+          - containerPort: 3000
+        command: ["npm", "start"]
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: express-serv
+spec:
+  selector:
+    app: express-depl
+  ports:
+  - protocol: TCP
+    port: 2222
+    targetPort: 3000
+
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: express-ingress
+spec:
+  rules:
+  - host: express-test.com
+    http: 
+      paths:
+      - pathType: Prefix
+        path: /
+        backend:
+          service:
+            name: express-serv
+            port:
+              number: 2222
