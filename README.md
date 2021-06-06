@@ -1,5 +1,5 @@
 # How I get started to Kubernetes
-Read instructor for more useful command
+Read `instruction.txt` for more useful command
 
 # Installation
 
